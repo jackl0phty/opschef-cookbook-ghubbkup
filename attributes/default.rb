@@ -20,7 +20,7 @@ node.set['ghubbkup']['pass'] = 'root'
 node.set['ghubbkup']['data_bag_secret'] = '/etc/chef/encrypted_data_bag_secret'
 
 # Encrypted data bag name.
-node.set['amazonZ_s3cmd']['encrypted_data_bag_name'] = 'ghubbkup'
+node.set['ghubbkup']['encrypted_data_bag_name'] = 'ghubbkup'
 
 # Encrypted data bag item.
-node.set['amazonZ_s3cmd']['encrypted_data_bag_item'] = 'creds'
+node.set['ghubbkup']['encrypted_data_bag_item'] = 'creds'
