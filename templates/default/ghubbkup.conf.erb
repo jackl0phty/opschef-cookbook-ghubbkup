@@ -6,7 +6,8 @@ adapter~~:net_http
 ssl~~{:verify => false}
 
 # Basic Auth options.
-<%= @github_user %>:<%= @github_pass %>
+github_user~~<%= @github_user %>
+github_pass~~<%= @github_pass %>
 
 # ghubbkup options.
 backup_method~~s3
