@@ -38,7 +38,7 @@ end
 
 # Deploy config file for ghubbkup.
 template "#{node['ghubbkup']['conf_dir']}/ghubbkup.conf" do
-  source "ghubbkup.erb"
+  source "ghubbkup.conf.erb"
   mode 0640
   owner node['ghubbkup']['user']
   group node['ghubbkup']['group']
