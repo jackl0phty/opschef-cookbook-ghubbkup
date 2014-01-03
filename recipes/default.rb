@@ -18,7 +18,7 @@ if File.exists?(node['ghubbkup']['data_bag_secret']) then
   # Set up encrypted data bag.
   data_bag_secret = node['ghubbkup']['data_bag_secret']
   ghubbkup_secret = Chef::EncryptedDataBagItem.load_secret(data_bag_secret)
-  ghubbkup_creds = Chef::EncryptedDataBagItem.load(node['ghubbkup']['encrypted_data_bag_name'], node['ghubbkup']['encrypted_data_bag_item'], s3_secret)
+  ghubbkup_creds = Chef::EncryptedDataBagItem.load(node['ghubbkup']['encrypted_data_bag_name'], node['ghubbkup']['encrypted_data_bag_item'], ghubbkup_secret)
 
   # Save Github user & pass to variables.
   ghub_user = ghubbkup_creds["github_user"]
