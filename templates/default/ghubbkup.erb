@@ -5,6 +5,7 @@ require 'optparse'
 require 'github_api'
 
 # Declare variables.
+conf_dir = '/etc/ghubbkup.conf'
 
 options = {}
 
@@ -25,7 +26,32 @@ opt_parser.parse!
 
 case ARGV[0]
 
-when "environments"
+when "all"
+
+  # Get config options.
+
+
+def get_config()
+
+  # Declare array.
+  ghubbkup_config = []
+
+  # Read ghubbkup config & get github settings.
+  ghubbkup_config = File.open("#{conf_dir}").map.each do |line|
+    line.chomp!
+    line.split('~~')
+  end
+
+  # Loop array & clone ALL Github repos.
+  for config in ghubbkup_config
+
+    # Uncomment lines below to debug.
+    puts "Github options: #{config}"
+
+  end 
+
+end
+
 
 
 else

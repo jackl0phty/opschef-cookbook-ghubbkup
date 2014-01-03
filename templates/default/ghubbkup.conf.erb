@@ -1,0 +1,12 @@
+# Github options.
+endpoint~~'https://github.company.com/api/v3'
+site~~'https://github.company.com'
+oauth_token~~'token'
+adapter~~:net_http
+ssl~~{:verify => false}
+
+# Basic Auth options.
+<%- @github_user -%>:<%- @github_pass -%>
+
+# ghubbkup options.
+backup_method~~s3

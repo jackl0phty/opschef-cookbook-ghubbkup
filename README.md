@@ -8,24 +8,103 @@ A working Ruby 1.9.x installation.
 
 Attributes
 ----------
-There are currently no attributes for this cookbook.
+Set config dir for ghubbkup.
+node.set['ghubbkup']['conf_dir'] = '/etc'
+
+Set ghubbkup install dir.
+node.set['ghubbkup']['install_dir'] = '/usr/local/bin'
+
+Set owner of ghubbkup utility.
+node.set['ghubbkup']['user'] = 'root'
+
+Set group owner of ghubbkup utility.
+node.set['ghubbkup']['pass'] = 'root'
 
 Usage
 -----
-#### ghubbkup::default
-TODO: Write usage instructions for each cookbook.
+You'll need to create a secret key for your data bag.
+<pre><code>
+skywalker@alderaan:~$ openssl rand -base64 512 > data_bag_secret_key
+</pre></code>
+Create new data bag item to be used with S3.
+<pre><code>
+skywalker@alderaan:~/your/chef-repo$ knife data bag create  --secret-file ~/data_bag_secret_key ghubbkup creds 
+Created data_bag[ghubbkup] 
+Created data_bag_item[creds] 
 
-e.g.
-Just include `ghubbkup` in your node's `run_list`:
+{ 
+  "id": "creds", 
+  "github_user": "YOUR_GITHUB_USER NAME_HERE", 
+  "github_pass": "YOUR_GITHUB_PASSWORD_HERE" 
+} 
+</pre></code>
 
-```json
+If you get the following error below...
+<pre><code>
+ERROR: RuntimeError: Please set EDITOR environment variable
+</pre></code>
+
+...make sure you export your editor as EDITOR
+<pre><code>
+export EDITOR=vim
+</pre></code>
+
+Verify your encrypted data bag items.
+<pre><code>
+skywaler@alderaan:~/your/chef-repo$ knife data bag show ghubbkup creds
+id:            creds
+github_user: 
+  cipher:         aes-256-cbc 
+  encrypted_data:  BUNCH_OF_RANDOM_CHARS_HERE
+  iv:             RANDOM_CHARS_HERE
+  version:        1 
+github_pass: 
+  cipher:         aes-256-cbc 
+  encrypted_data: BUNCH_OF_RANDOM_CHARS_HERE
+  iv:             RANDOM_CHARS_HERE
+  version:        1 
+skywaler@alderaan:~/your/chef-repo$ 
+</pre></code>
+
+Now check your decrypted data bag items
+<pre><code>
+skywaler@alderaan:~/your/chef-repo$ knife data bag show –secret-file=/home/you/data_bag_secret_key ghubbkup creds
+id:            s3cfg 
+s3_access_key: YOUR_ACCESS_KEY_HERE
+s3_secret_key: YOUR_SECRET_KEY_HERE
+</pre></code>
+
+You may also want to export an encrypted version of your data bag to add to your version control such as Git
+<pre><code>
+skywalker@alderaan:~ knife data bag show ghubbkup creds -Fj > data_bags/ghubbkup/ghubbkup.json
+</pre></code>
+
+Copy your secret key to your node.
+<pre><code>
+skywalker@alderaan:~ $ scp /home/you/data_bag_secret_key skywalker@alderaan: 
+skywalker@alderaan's password: 
+data_bag_secret_key                                                                                                                                                            100%  695     0.7KB/s   00:00    
+</pre></code>
+
+Move your key to /etc/chef
+<pre><code>
+skywalker@alderaan:~ $ sudo mv /home/skywalker/data_bag_secret_key /etc/chef/
+</pre></code>
+
+Now just include `ghubbkup` in your node's `run_list`:
+
+<pre><code>
 {
   "name":"my_node",
   "run_list": [
     "recipe[ghubbkup]"
   ]
 }
-```
+</pre></code>
+
+Example ghubbkup commands
+-------------------------
+
 
 Contributing
 ------------
