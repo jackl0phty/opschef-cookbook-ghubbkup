@@ -2,10 +2,8 @@
 
 # Include required libraries.
 require 'optparse'
-require 'github_api'
 
 # Declare variables.
-conf_dir = '/etc/ghubbkup.conf'
 
 options = {}
 
@@ -24,14 +22,10 @@ end
 
 opt_parser.parse!
 
-case ARGV[0]
+def get_config
 
-when "all"
-
-  # Get config options.
-
-
-def get_config()
+  # Declare local variables.
+  conf_dir = '/etc/ghubbkup.conf'
 
   # Declare array.
   ghubbkup_config = []
@@ -48,11 +42,16 @@ def get_config()
     # Uncomment lines below to debug.
     puts "Github options: #{config}"
 
-  end 
+  end
 
 end
 
+case ARGV[0]
 
+when "all"
+
+  # Get config options.
+  get_config
 
 else
   puts opt_parser
