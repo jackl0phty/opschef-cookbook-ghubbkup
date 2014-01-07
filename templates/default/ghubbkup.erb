@@ -4,6 +4,8 @@
 require 'optparse'
 
 # Declare variables.
+github_user = ''
+github_pass = ''
 
 options = {}
 
@@ -26,24 +28,45 @@ def get_config
 
   # Declare local variables.
   conf_dir = '/etc/ghubbkup.conf'
-
-  # Declare array.
   ghubbkup_config = []
 
   # Read ghubbkup config & get github settings.
-  ghubbkup_config = File.open("#{conf_dir}").map.each do |line|
-    line.chomp!
-    line.split('~~')
-  end
+  #ghubbkup_config = File.open("#{conf_dir}").map.each do |line|
+  #  line.chomp!
+  #  line.split('~~')
+  #end
 
   # Loop array & clone ALL Github repos.
-  for config in ghubbkup_config
+  #for config in ghubbkup_config
 
     # Uncomment lines below to debug.
-    puts "Github options: #{config}"
+  #  puts "Github options: #{config}"
 
-  end
+  #end
 
+   # Get github user.
+  github_user = `cat #{conf_dir} |grep github_user`
+  github_user.slice! "github_user~~"
+
+  # Get github password.
+  github_user = `cat #{conf_dir} |grep github_user`
+  github_user.slice! "github_user~~"
+
+  # Uncomment to debug.
+  puts "Github user: #{github_user}"
+  puts "Github pass: #{github_pass}"
+
+end
+
+def clone_repos
+
+  # Uncomment to debug.
+  puts "Github user: #{github_user}"
+  puts "Github pass: #{github_pass}" 
+
+  # Get repo list.
+  Github.repos.list user: "#{github_user}"
+  
 end
 
 case ARGV[0]
@@ -52,6 +75,9 @@ when "all"
 
   # Get config options.
   get_config
+
+  # Clone ALL Github repos.
+  clone_repos
 
 else
   puts opt_parser
