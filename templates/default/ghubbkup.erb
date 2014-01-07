@@ -49,8 +49,8 @@ def get_config
   github_user.slice! "github_user~~"
 
   # Get github password.
-  github_user = `cat #{conf_dir} |grep github_user`
-  github_user.slice! "github_user~~"
+  github_pass = `cat #{conf_dir} |grep github_user`
+  github_pass.slice! "github_pass~~"
 
   # Uncomment to debug.
   puts "Github user: #{github_user}"
