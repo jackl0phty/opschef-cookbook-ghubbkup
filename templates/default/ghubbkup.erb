@@ -87,7 +87,7 @@ def get_pass_basic_auth
 
   # Get github password from config.
   github_pass = `cat #{CONFDIR} |grep github_pass`
-  github_user.slice! "github_user~~"
+  github_pass.slice! "github_pass~~"
   
   # Uncomment to debug.
   puts "Github password: #{github_pass}"
