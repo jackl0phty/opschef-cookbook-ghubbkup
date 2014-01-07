@@ -58,7 +58,7 @@ def get_config
 
 end
 
-def clone_repos
+def clone_repos(github_user, github_pass)
 
   # Uncomment to debug.
   puts "Github user: #{github_user}"
@@ -69,6 +69,28 @@ def clone_repos
   
 end
 
+def get_github_creds(github_user, github_pass)
+
+  # Get github user from config.
+  github_user = `cat #{conf_dir} |grep github_user`
+  github_user.slice! "github_user~~"
+
+  # Get github password.
+  github_pass = `cat #{conf_dir} |grep github_user`
+  github_pass.slice! "github_pass~~"
+ 
+  # Return Github user.
+  return github_user
+ 
+  # Return Github password.
+  return github_pass
+
+  # Uncomment to debug.
+  puts "Github user: #{github_user}"
+  puts "Github pass: #{github_pass}"
+
+end
+
 case ARGV[0]
 
 when "all"
@@ -76,8 +98,15 @@ when "all"
   # Get config options.
   get_config
 
+  # Get Github creds.
+  get_github_creds  
+
+  # Uncomment to debug.
+  puts "Github user: #{github_user}"
+  puts "Github pass: #{github_pass}"
+
   # Clone ALL Github repos.
-  clone_repos
+  #clone_repos
 
 else
   puts opt_parser
