@@ -53,8 +53,8 @@ def get_config
   github_pass.slice! "github_pass~~"
 
   # Uncomment to debug.
-  puts "Github user: #{github_user}"
-  puts "Github pass: #{github_pass}"
+  #puts "Github user: #{github_user}"
+  #puts "Github pass: #{github_pass}"
 
 end
 
@@ -105,23 +105,8 @@ case ARGV[0]
 
 when "all"
 
-  # Get config options.
-  get_config
-
-  # Get Github creds.
-  
-
-  # Get Github user & pass.
-  ghub_user = get_user_basic_auth()
-
-  ghub_pass = get_pass_basic_auth()
-
-  # Uncomment to debug.
-  puts "Github user: #{ghub_user}"
-  puts "Github pass: #{ghub_pass}"
-
-  # Clone ALL Github repos.
-  #clone_repos
+  # Get Github creds & Clone ALL repos.
+  clone_repos
 
 else
   puts opt_parser
