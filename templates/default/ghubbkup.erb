@@ -4,6 +4,7 @@
 require 'optparse'
 
 # Declare variables.
+conf_dir = '/etc/ghubbkup.conf'
 github_user = ''
 github_pass = ''
 
@@ -27,7 +28,6 @@ opt_parser.parse!
 def get_config
 
   # Declare local variables.
-  conf_dir = '/etc/ghubbkup.conf'
   ghubbkup_config = []
 
   # Read ghubbkup config & get github settings.
