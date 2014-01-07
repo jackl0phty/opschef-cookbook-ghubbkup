@@ -4,7 +4,7 @@
 require 'optparse'
 
 # Declare variables.
-conf_dir = '/etc/ghubbkup.conf'
+CONFDIR = '/etc/ghubbkup.conf'
 github_user = ''
 github_pass = ''
 
@@ -31,7 +31,7 @@ def get_config
   ghubbkup_config = []
 
   # Read ghubbkup config & get github settings.
-  #ghubbkup_config = File.open("#{conf_dir}").map.each do |line|
+  #ghubbkup_config = File.open("#{CONFDIR}").map.each do |line|
   #  line.chomp!
   #  line.split('~~')
   #end
@@ -45,11 +45,11 @@ def get_config
   #end
 
    # Get github user.
-  github_user = `cat #{conf_dir} |grep github_user`
+  github_user = `cat #{CONFDIR} |grep github_user`
   github_user.slice! "github_user~~"
 
   # Get github password.
-  github_pass = `cat #{conf_dir} |grep github_user`
+  github_pass = `cat #{CONFDIR} |grep github_user`
   github_pass.slice! "github_pass~~"
 
   # Uncomment to debug.
@@ -72,11 +72,11 @@ end
 def get_github_creds(github_user, github_pass)
 
   # Get github user from config.
-  github_user = `cat #{conf_dir} |grep github_user`
+  github_user = `cat #{CONFDIR} |grep github_user`
   github_user.slice! "github_user~~"
 
   # Get github password.
-  github_pass = `cat #{conf_dir} |grep github_user`
+  github_pass = `cat #{CONFDIR} |grep github_user`
   github_pass.slice! "github_pass~~"
  
   # Return Github user.
