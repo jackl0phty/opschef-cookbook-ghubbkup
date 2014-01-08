@@ -47,7 +47,7 @@ def clone_repos()
 
  # Get repo list.
   github = Github.new basic_auth: "#{github_user}:#{github_pass}"
-  repos = Github.repos.list user: "#{github_user}"
+  repos = Github.repos.list user: "#{github_user}", auto_pagination: true
 
   # Write repos to file.
   File.open("#{REPOLIST}", 'w') { |file| file.write("#{repos}") }
