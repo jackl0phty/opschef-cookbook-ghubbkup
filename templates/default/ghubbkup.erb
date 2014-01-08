@@ -2,6 +2,7 @@
 
 # Include required libraries.
 require 'optparse'
+require 'github_api'
 
 # Declare variables.
 CONFDIR = '/etc/ghubbkup.conf'
@@ -64,12 +65,21 @@ def clone_repos()
   github_user = get_user_basic_auth()  
   github_pass = get_pass_basic_auth()
 
+  # Remove white from creds.
+  github_user.strip!
+  github_pass.strip! 
+
   # Uncomment to debug.
-  puts "Github user: #{github_user}"
-  puts "Github pass: #{github_pass}" 
+  #puts "Github user: #{github_user}"
+  #puts "Github pass: #{github_pass}" 
 
   # Get repo list.
-  Github.repos.list user: "#{github_user}"
+  github = Github.new basic_auth: "#{github_user}:#{github_pass}"
+  repos = Github.repos.list user: "#{github_user}"
+
+  # Print repo list.
+  puts "#{repos}"
+
   
 end
 
