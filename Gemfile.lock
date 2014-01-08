@@ -15,6 +15,7 @@ GEM
       oauth2
     hashie (2.0.5)
     httpauth (0.2.0)
+    json (1.8.1)
     jwt (0.1.8)
       multi_json (>= 1.5)
     mini_portile (0.5.2)
@@ -37,3 +38,4 @@ PLATFORMS
 
 DEPENDENCIES
   github_api
+  json

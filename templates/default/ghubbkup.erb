@@ -1,8 +1,10 @@
 #!/usr/bin/env ruby
 
 # Include required libraries.
+require 'rubygems'
 require 'optparse'
 require 'github_api'
+require 'json'
 
 # Declare variables.
 CONFDIR = '/etc/ghubbkup.conf'
@@ -77,8 +79,12 @@ def clone_repos()
   github = Github.new basic_auth: "#{github_user}:#{github_pass}"
   repos = Github.repos.list user: "#{github_user}"
 
+  # Use json gem to parse output.
+  repos_json = JSON.parse(repos)
+
   # Print repo list.
-  puts "#{repos}"
+  #puts "#{repos}"
+  puts "#{repos_json}"
 
   
 end
