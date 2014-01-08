@@ -11,6 +11,8 @@ github_user = ''
 github_pass = ''
 REPOLIST = '/tmp/repos.txt'
 REPOLIST2 = '/tmp/repos2.txt'
+BACKUPDIR = '/tmp/github_repos_backup'
+GITEXTENSION = '.git'
 
 options = {}
 
@@ -45,7 +47,8 @@ def clone_repos()
   #puts "Github user: #{github_user}"
   #puts "Github pass: #{github_pass}" 
 
-  # Get repo list.
+# Get repo list.
+  #github = Github.new oauth_token: `git config github.token`
   github = Github.new basic_auth: "#{github_user}:#{github_pass}"
   repos = Github.repos.list user: "#{github_user}", auto_pagination: true
 
@@ -66,7 +69,18 @@ def clone_repos()
 
   # Print repo list.
   repos.split(/\n/).each do |repo|
+
+    # Build git clone command.
+    git_cmd = "git clone --progress git@github.com:#{github_user}/#{repo}#{GITEXTENSION} #{BACKUPDIR}/#{repo}"
+    git_cmd = git_cmd.gsub(/[[:space:]]/,'')
+
+    # Clone repo list to BACKUPDIR.
+    system("#{git_cmd}")
+
+    # Uncomment to debug.
     puts "#{repo}"
+    puts "Git command: #{git_cmd}"
+
   end
 
 end
