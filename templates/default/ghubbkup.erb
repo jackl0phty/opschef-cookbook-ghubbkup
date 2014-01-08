@@ -45,7 +45,7 @@ def clone_repos()
   #puts "Github user: #{github_user}"
   #puts "Github pass: #{github_pass}" 
 
- # Get repo list.
+  # Get repo list.
   github = Github.new basic_auth: "#{github_user}:#{github_pass}"
   repos = Github.repos.list user: "#{github_user}", auto_pagination: true
 
@@ -61,9 +61,13 @@ def clone_repos()
   # Clean up repo list.
   repos.gsub!(/^url="https:\/\/api.github.com\/repos\/#{github_user}\//,'')
   repos.gsub!(/"\swatchers=\d+/,'')
+  repos.gsub!(/"/,'')
+  repos.gsub!(/=\d+>,/,'')
 
   # Print repo list.
-  puts "#{repos}"
+  repos.split(/\n/).each do |repo|
+    puts "#{repo}"
+  end
 
 end
 
