@@ -69,10 +69,14 @@ def clone_repos()
 
   # Print repo list.
   repos.split(/\n/).each do |repo|
-
+  
     # Build git clone command.
+    github_user.strip
+    github_user.strip!
+    repo.strip
+    repo.strip!
     git_cmd = "git clone --progress git@github.com:#{github_user}/#{repo}#{GITEXTENSION} #{BACKUPDIR}/#{repo}"
-    git_cmd = git_cmd.gsub(/[[:space:]]/,'')
+    #git_cmd = git_cmd.gsub(/[[:space:]]/,'')
 
     # Clone repo list to BACKUPDIR.
     system("#{git_cmd}")
