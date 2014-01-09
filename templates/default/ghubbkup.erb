@@ -81,6 +81,19 @@ def clone_repos()
     # Sub git url with https url.
     git_cmd = git_cmd.sub( "git@github.com:", "https://github.com/" )
 
+    # Check if git client is available.
+    git_bin = `which git`
+
+    if git_bin.empty?
+
+      # Inform user can't find a git client & exit.
+      puts "Can't find a git client. Is it installed? Is git in your $PATH?"
+
+      # Exit
+      exit
+
+    end
+ 
     # Check if backup directory exists.
     if Dir.exists?("#{BACKUPDIR}")
 
