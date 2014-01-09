@@ -14,14 +14,14 @@ require 'github_api'
 #BACKUPDIR = '/tmp/github_repos_backup'
 #GITEXTENSION = '.git'
 #GITURL = 'https://github.com/'
-github_user = <%= node['ghubbkup']['user'] %>
-github_pass = <%= node['ghubbkup']['pass'] %>
-REPOLIST = <%= node['ghubbkup']['tmp_repo_list'] %>
-REPOLIST2 = <%= node['ghubbkup']['repo_list'] %>
-BACKUPDIR = <%= node['ghubbkup']['backup_dir'] %>
-GITEXTENSION = <%= node['ghubbkup']['git_extension'] %>
-GITURL = <%= node['ghubbkup']['git_url'] %>
-CONF = <%= node['ghubbkup']['conf'] %>
+github_user = '<%= node['ghubbkup']['user'] %>'
+github_pass = '<%= node['ghubbkup']['pass'] %>'
+REPOLIST = '<%= node['ghubbkup']['tmp_repo_list'] %>'
+REPOLIST2 = '<%= node['ghubbkup']['repo_list'] %>'
+BACKUPDIR = '<%= node['ghubbkup']['backup_dir'] %>'
+GITEXTENSION = '<%= node['ghubbkup']['git_extension'] %>'
+GITURL = '<%= node['ghubbkup']['git_url'] %>'
+CONF = '<%= node['ghubbkup']['conf'] %>'
 
 options = {}
 
