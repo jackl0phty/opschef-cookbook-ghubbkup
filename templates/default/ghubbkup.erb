@@ -6,14 +6,6 @@ require 'optparse'
 require 'github_api'
 
 # Declare variables.
-#CONFDIR = '/etc/ghubbkup.conf'
-#github_user = ''
-#github_pass = ''
-#REPOLIST = '/tmp/repos.txt'
-#REPOLIST2 = '/tmp/repos2.txt'
-#BACKUPDIR = '/tmp/github_repos_backup'
-#GITEXTENSION = '.git'
-#GITURL = 'https://github.com/'
 github_user = '<%= node['ghubbkup']['user'] %>'
 github_pass = '<%= node['ghubbkup']['pass'] %>'
 REPOLIST = '<%= node['ghubbkup']['tmp_repo_list'] %>'
@@ -89,13 +81,26 @@ def clone_repos()
     # Sub git url with https url.
     git_cmd = git_cmd.sub( "git@github.com:", "https://github.com/" )
 
-    # Clone repo list to BACKUPDIR.
-    system("#{git_cmd}")
+    # Check if backup directory exists.
+    if Dir.exists?("#{BACKUPDIR}")
 
-    # Uncomment to debug.
-    puts "#{repo}"
-    puts "Git command: #{git_cmd}"
+      # Clone repo list to BACKUPDIR.
+      system("#{git_cmd}")
 
+      # Uncomment to debug.
+      #puts "Repo: #{repo}"
+      #puts "Git command: #{git_cmd}"
+
+      else
+
+        # Tell user backup dir doesn't exist & exit.
+        puts "Can't find backup directory #{BACKUPDIR}. Does it exist?"
+
+        # Exit subroutine
+        exit
+
+    end    
+ 
   end
 
 end
