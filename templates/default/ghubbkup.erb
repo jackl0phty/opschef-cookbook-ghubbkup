@@ -6,14 +6,22 @@ require 'optparse'
 require 'github_api'
 
 # Declare variables.
-CONFDIR = '/etc/ghubbkup.conf'
-github_user = ''
-github_pass = ''
-REPOLIST = '/tmp/repos.txt'
-REPOLIST2 = '/tmp/repos2.txt'
-BACKUPDIR = '/tmp/github_repos_backup'
-GITEXTENSION = '.git'
-GITURL = 'https://github.com/'
+#CONFDIR = '/etc/ghubbkup.conf'
+#github_user = ''
+#github_pass = ''
+#REPOLIST = '/tmp/repos.txt'
+#REPOLIST2 = '/tmp/repos2.txt'
+#BACKUPDIR = '/tmp/github_repos_backup'
+#GITEXTENSION = '.git'
+#GITURL = 'https://github.com/'
+github_user = <% node['ghubbkup']['user'] %>
+github_pass = <% node['ghubbkup']['pass'] %>
+REPOLIST = <% node['ghubbkup']['tmp_repo_list'] %>
+REPOLIST2 = <% node['ghubbkup']['repo_list'] %>
+BACKUPDIR = <% node['ghubbkup']['backup_dir'] %>
+GITEXTENSION = <% node['ghubbkup']['git_extension'] %>
+GITURL = <% node['ghubbkup']['git_url'] %>
+CONF = <% node.set['ghubbkup']['conf'] %>
 
 options = {}
 
@@ -95,7 +103,7 @@ end
 def get_user_basic_auth
 
   # Get github user from config.
-  github_user = `cat #{CONFDIR} |grep github_user`
+  github_user = `cat #{CONF} |grep github_user`
   github_user.slice! "github_user~~"
 
   # Uncomment to debug.
@@ -109,7 +117,7 @@ end
 def get_pass_basic_auth
 
   # Get github password from config.
-  github_pass = `cat #{CONFDIR} |grep github_pass`
+  github_pass = `cat #{CONF} |grep github_pass`
   github_pass.slice! "github_pass~~"
 
   # Uncomment to debug.

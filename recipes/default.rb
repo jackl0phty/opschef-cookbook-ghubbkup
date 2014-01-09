@@ -46,3 +46,12 @@ template "#{node['ghubbkup']['conf_dir']}/ghubbkup.conf" do
       :github_user => ghub_user,
       :github_pass => ghub_pass)
 end
+
+# Create backup directory.
+directory node['ghubbkup']['backup_dir'] do
+  owner node.set['ghubbkup']['user'] 
+  group node.set['ghubbkup']['group']
+  mode "0775"
+  action :create
+  not_if "test -d #{node['ghubbkup']['backup_dir']}"
+end
