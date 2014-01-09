@@ -49,8 +49,8 @@ end
 
 # Create backup directory.
 directory node['ghubbkup']['backup_dir'] do
-  owner node.set['ghubbkup']['user'] 
-  group node.set['ghubbkup']['group']
+  owner node['ghubbkup']['user']
+  group node['ghubbkup']['group']
   mode "0775"
   action :create
   not_if "test -d #{node['ghubbkup']['backup_dir']}"
