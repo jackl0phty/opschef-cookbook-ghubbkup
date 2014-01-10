@@ -107,20 +107,33 @@ def clone_repos()
         #puts "Repo: #{repo}"
         #puts "Git command: #{git_cmd}"
 
-        else
+      end
 
-          # Tell user backup dir doesn't exist & exit.
-          puts "Can't find backup directory #{BACKUPDIR}. Does it exist?"
-
-          # Exit subroutine
-          exit
-
-      end    
- 
     end
 
-  end
+    # Do git pull if repo is already cloned.
+    if Dir.exists?("#{BACKUPDIR}/#{repo}")
 
+       # Build git command.
+       git_cmd = "cd #{BACKUPDIR}/#{repo}; git pull"
+
+       # Inform user & update repo via git pull.
+       pwd = Dir.pwd
+       puts "Doing git pull from #{pwd}..." 
+       system("#{git_cmd}"
+
+    end
+
+    if !(File.directory?("#{BACKUPDIR}")
+
+      # Inform user can't find backupdir & exit.
+      puts "Can't find backup directory #{BACKUPDIR}. Does it exist?"
+
+      # Exit subroutine
+      exit
+ 
+    end
+ 
 end
 
 def get_user_basic_auth
