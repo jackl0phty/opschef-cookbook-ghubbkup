@@ -182,7 +182,7 @@ when "all"
   clone_repos
 
   # Backup to S3 if s3 bucket is provided & attribute set.
-  if BACKUP_TYPE = 's3'
+  if "#{BACKUP_TYPE}" == 's3'
 
     # Call backup_to_s3() to backup repos to s3.
     backup_to_s3()
