@@ -97,23 +97,28 @@ def clone_repos()
     # Check if backup directory exists.
     if Dir.exists?("#{BACKUPDIR}")
 
-      # Clone repo list to BACKUPDIR.
-      system("#{git_cmd}")
+      # Only do git clone if repo hasn't been cloned.
+      if !(File.directory?("#{BACKUPDIR}/#{repo}") )      
 
-      # Uncomment to debug.
-      #puts "Repo: #{repo}"
-      #puts "Git command: #{git_cmd}"
+        # Clone repo list to BACKUPDIR.
+        system("#{git_cmd}")
 
-      else
+        # Uncomment to debug.
+        #puts "Repo: #{repo}"
+        #puts "Git command: #{git_cmd}"
 
-        # Tell user backup dir doesn't exist & exit.
-        puts "Can't find backup directory #{BACKUPDIR}. Does it exist?"
+        else
 
-        # Exit subroutine
-        exit
+          # Tell user backup dir doesn't exist & exit.
+          puts "Can't find backup directory #{BACKUPDIR}. Does it exist?"
 
-    end    
+          # Exit subroutine
+          exit
+
+      end    
  
+    end
+
   end
 
 end
