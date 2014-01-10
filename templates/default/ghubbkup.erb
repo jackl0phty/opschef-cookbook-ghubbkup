@@ -124,7 +124,7 @@ def clone_repos()
 
     end
 
-    if !(File.directory?("#{BACKUPDIR}")
+    if !(File.directory?("#{BACKUPDIR}"))
 
       # Inform user can't find backupdir & exit.
       puts "Can't find backup directory #{BACKUPDIR}. Does it exist?"
