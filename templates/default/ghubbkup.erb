@@ -14,6 +14,7 @@ BACKUPDIR = '<%= node['ghubbkup']['backup_dir'] %>'
 GITEXTENSION = '<%= node['ghubbkup']['git_extension'] %>'
 GITURL = '<%= node['ghubbkup']['git_url'] %>'
 CONF = '<%= node['ghubbkup']['conf'] %>'
+BACKUP_TYPE = '<%= node['ghubbkup']['backup_type']'
 
 options = {}
 
@@ -181,7 +182,7 @@ when "all"
   clone_repos
 
   # Backup to S3 if s3 bucket is provided & attribute set.
-  if node.set['ghubbkup']['backup_type']  = 's3'
+  if BACKUP_TYPE = 's3'
 
     # Call backup_to_s3() to backup repos to s3.
     backup_to_s3()
