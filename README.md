@@ -104,7 +104,16 @@ Now just include `ghubbkup` in your node's `run_list`:
 
 Example ghubbkup commands
 -------------------------
+Clone ALL repos for a single Github user or org.
+<pre><code>
+skywalker@alderaan:~$ ghubbkup all
+</pre></code>
 
+THINGS TO NOTE
+--------------
+* You should issue ghubbkup commands as the user who has access to your Github account.
+* You can override node['ghubbkup']['git_url'] & set it to git@github.com: to use SSH.
+* Command <code>ghubbkup all</code> will do <code>git clone</code> if repo isn't cloned & <code>git pull</code> if repo is already cloned.
 
 Contributing
 ------------
