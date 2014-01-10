@@ -46,3 +46,5 @@ node.set['ghubbkup']['git_url'] = 'https://github.com/'
 # Backup method. Possible options: s3.
 # Set to s3 if you wan to backup repos to s3. No backups are done by default.
 node.set['ghubbkup']['backup_type'] = ''
+
+node.set['ghubbkup']['s3cmd_cmdline_options'] = '-v sync'

@@ -15,6 +15,7 @@ GITEXTENSION = '<%= node['ghubbkup']['git_extension'] %>'
 GITURL = '<%= node['ghubbkup']['git_url'] %>'
 CONF = '<%= node['ghubbkup']['conf'] %>'
 BACKUP_TYPE = '<%= node['ghubbkup']['backup_type'] %>'
+S3CMD_CMDLINE_OPTIONS = '<%= node['ghubbkup']['s3cmd_cmdline_options'] %>'
 
 options = {}
 
@@ -120,7 +121,7 @@ def clone_repos()
 
        # Inform user & update repo via git pull.
        pwd = Dir.pwd
-       puts "Doing git pull from #{pwd}..." 
+       puts "Doing git pull in #{BACKUPDIR}/#{repo}..." 
        system("#{git_cmd}")
 
     end
@@ -141,8 +142,28 @@ end
 
 def backup_to_s3
 
-  # Backup cloned repos to s3.
-  puts "Test"
+  # Check if git client is available.
+  s3cmd_bin = `which s3cmd`
+
+  if s3cmd_bin.empty?
+
+    # Inform user can't find the s3cmd binary & exit.
+    puts "Can't find the s3cmd binary. Is it installed? Is s3cmd in your $PATH?"
+
+    # Exit
+    exit
+
+  end
+
+  # Build s3cmd.
+  s3cmd = "s3cmd #{S3CMD_CMDLINE_OPTIONS} ARGV[1]"
+
+  # Uncomment below to debug.
+  puts "s3cmd = #{s3cmd}"
+  puts "S3 bucket: ARGV[1]"
+
+  # Call s3cmd and backup cloned repos to user provided S3 bucket.
+  #system("s3cmd")
 
 end
 
@@ -181,7 +202,7 @@ when "all"
   # Get Github creds & Clone ALL repos.
   clone_repos
 
-  # Backup to S3 if s3 bucket is provided & attribute set.
+  # Backup to S3 if S3 bucket is provided & attribute set.
   if "#{BACKUP_TYPE}" == 's3'
 
     # Call backup_to_s3() to backup repos to s3.
