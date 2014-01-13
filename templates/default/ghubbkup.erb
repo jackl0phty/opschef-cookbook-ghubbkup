@@ -162,12 +162,12 @@ def backup_to_s3
 
   # Uncomment below to debug.
   puts "s3cmd = #{s3cmd}"
-  puts "Files to backup: #{ARGV[1]"
-  puts "S3 bucket: #{ARGV[2]}"
+  #puts "Files to backup: #{FILES_TO_BACKUP}"
+  #puts "S3 bucket: #{S3_BUCKET}"
   
 
   # Call s3cmd and backup cloned repos to user provided S3 bucket.
-  #system("s3cmd")
+  system("s3cmd")
 
 end
 
