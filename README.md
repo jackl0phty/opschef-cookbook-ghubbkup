@@ -102,6 +102,20 @@ Now just include `ghubbkup` in your node's `run_list`:
 }
 </pre></code>
 
+SAMPLE ROLE
+-----------
+Below is a sample role you could use:
+<pre><code>
+name "ghubbkup"
+description "Install ghubbkup cmd-line tool to backup Github repos."
+override_attributes "ghubbkup" => {
+	"data_bag_secret" => "/home/skywalker/data_bag_secret_key",
+	"group" => "skywalker",
+        "backup_type" => 's3'
+}
+run_list "recipe[ghubbkup]"
+</pre></code>
+
 Example ghubbkup commands
 -------------------------
 Clone ALL repos for a single Github user or org.

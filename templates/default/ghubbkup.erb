@@ -16,6 +16,8 @@ GITURL = '<%= node['ghubbkup']['git_url'] %>'
 CONF = '<%= node['ghubbkup']['conf'] %>'
 BACKUP_TYPE = '<%= node['ghubbkup']['backup_type'] %>'
 S3CMD_CMDLINE_OPTIONS = '<%= node['ghubbkup']['s3cmd_cmdline_options'] %>'
+FILES_TO_BACKUP = '<%= node['ghubbkup']['files_to_backup'] %>'
+S3_BUCKET = '<%= node['ghubbkup']['s3_bucket'] %>'
 
 options = {}
 
@@ -156,11 +158,13 @@ def backup_to_s3
   end
 
   # Build s3cmd.
-  s3cmd = "s3cmd #{S3CMD_CMDLINE_OPTIONS} ARGV[1]"
+  s3cmd = "s3cmd #{S3CMD_CMDLINE_OPTIONS} #{FILES_TO_BACKUP} #{S3_BUCKET}"
 
   # Uncomment below to debug.
   puts "s3cmd = #{s3cmd}"
-  puts "S3 bucket: ARGV[1]"
+  puts "Files to backup: #{ARGV[1]"
+  puts "S3 bucket: #{ARGV[2]}"
+  
 
   # Call s3cmd and backup cloned repos to user provided S3 bucket.
   #system("s3cmd")
