@@ -161,7 +161,7 @@ def backup_to_s3
   s3cmd = "s3cmd #{S3CMD_CMDLINE_OPTIONS} #{FILES_TO_BACKUP} #{S3_BUCKET}"
 
   # Uncomment below to debug.
-  puts "s3cmd = #{s3cmd}"
+  #puts "s3cmd = #{s3cmd}"
   #puts "s3cmd options: #{S3CMD_CMDLINE_OPTIONS}"
   #puts "Files to backup: #{FILES_TO_BACKUP}"
   #puts "S3 bucket: #{S3_BUCKET}"
