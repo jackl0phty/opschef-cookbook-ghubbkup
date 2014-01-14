@@ -1,3 +1,5 @@
+Travis-ci status: [![Build Status](https://secure.travis-ci.org/jackl0phty/opschef-cookbook-ghubbkup.png?branch=master)](http://travis-ci.org/jackl0phty/opschef-cookbook-ghubbkup)
+
 ghubbkup Cookbook
 =================
 ghubbkup is a Ruby cmd-line utility that can be used to backup Git repos on Github using the Github API v3.
