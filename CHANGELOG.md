@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of ghubbkup.
 
+## 0.1.47
+* Working version of the ghubbkup script.
+* Initial travis-ci support.
+
 ## 0.1.0:
 
 * Initial release of ghubbkup
