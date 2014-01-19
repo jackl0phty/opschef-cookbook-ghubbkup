@@ -55,3 +55,6 @@ directory node['ghubbkup']['backup_dir'] do
   action :create
   not_if "test -d #{node['ghubbkup']['backup_dir']}"
 end
+
+# Include s3cmd.
+include_recipe 'ghubbkup::s3cmd'

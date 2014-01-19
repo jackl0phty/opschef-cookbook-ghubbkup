@@ -71,9 +71,9 @@ skywaler@alderaan:~/your/chef-repo$
 Now check your decrypted data bag items
 <pre><code>
 skywaler@alderaan:~/your/chef-repo$ knife data bag show –secret-file=/home/you/data_bag_secret_key ghubbkup creds
-id:            s3cfg 
-s3_access_key: YOUR_ACCESS_KEY_HERE
-s3_secret_key: YOUR_SECRET_KEY_HERE
+id:            creds 
+github_pass: YOUR_GITHUB_PASSWORD_HERE
+github_user: YOUR_GITHUB_USER_HERE
 </pre></code>
 
 You may also want to export an encrypted version of your data bag to add to your version control such as Git
@@ -98,11 +98,11 @@ SAMPLE ROLE
 Below is a sample role you could use:
 <pre><code>
 override_attributes "ghubbkup" => {
-	"data_bag_secret" => "/home/gerald/data_bag_secret_key",
-	"group" => "gerald",
+	"data_bag_secret" => "/home/skywalker/data_bag_secret_key",
+	"group" => "skywalker",
         "backup_type" => 's3',
 	"files_to_backup" => "/tmp/test.txt",
-	"s3_bucket" => "s3://jackl0phty-github-backup"
+	"s3_bucket" => "s3://alderaan-github-backup"
 }
 run_list "recipe[ghubbkup]"
 </pre></code>
