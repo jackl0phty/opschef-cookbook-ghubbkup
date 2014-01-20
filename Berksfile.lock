@@ -1,0 +1,21 @@
+{
+  "sha": "d25e03179c575f7ec6d118a1d0c5f8a74b3afb60",
+  "sources": {
+    "ghubbkup": {
+      "locked_version": "0.1.48",
+      "git": "git@github.com:jackl0phty/opschef-cookbook-ghubbkup.git",
+      "ref": "b57e6b891aec93d16a9e15b42df057cb5f6eacb1"
+    },
+    "amazon_s3cmd": {
+      "locked_version": "0.1.53",
+      "git": "git@github.com:jackl0phty/opschef-cookbook-amazon_s3cmd.git",
+      "ref": "a2a555ccbeaf83bd18abd6a03c1a55d95181ee4b"
+    },
+    "magic_shell": {
+      "locked_version": "0.3.2"
+    },
+    "yum": {
+      "locked_version": "2.3.2"
+    }
+  }
+}

@@ -4,6 +4,16 @@
 #
 # Copyright 2014, Gerald L. Hevener Jr., M.S.
 #
+# Install wget & curl on arch.
+case node['platform']
+   
+  when "arch"
+    %w{ curl wget }.each do |pkg|
+    package pkg
+  end
+
+end
+
 # Deploy the ghubbkup Ruby script.
 template "#{node['ghubbkup']['install_dir']}/ghubbkup" do
   source "ghubbkup.erb"
