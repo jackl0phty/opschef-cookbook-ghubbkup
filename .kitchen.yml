@@ -4,26 +4,26 @@ driver_config:
   require_chef_omnibus: true
 
 platforms:
-#- name: ubuntu-12.04
-#  driver_config:
-#    box: opscode-ubuntu-12.04
-#    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box
-#- name: ubuntu-10.04
-#  driver_config:
-#    box: opscode-ubuntu-10.04
-#    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-10.04_provisionerless.box
-#- name: opscode-debian-7.1.0
-#  driver_config:
-#    box: opscode-debian-7.1.0
-#    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_debian-7.1.0_provisionerless.box
-#- name: centos-6.4
-#  driver_config:
-#    box: opscode-centos-6.4
-#    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box
-#- name: centos-5.9
-#  driver_config:
-#    box: opscode-centos-5.9
-#    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-5.9_provisionerless.box
+- name: ubuntu-12.04
+  driver_config:
+    box: opscode-ubuntu-12.04
+    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box
+- name: ubuntu-10.04
+  driver_config:
+    box: opscode-ubuntu-10.04
+    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-10.04_provisionerless.box
+- name: opscode-debian-7.1.0
+  driver_config:
+    box: opscode-debian-7.1.0
+    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_debian-7.1.0_provisionerless.box
+- name: centos-6.4
+  driver_config:
+    box: opscode-centos-6.4
+    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box
+- name: centos-5.9
+  driver_config:
+    box: opscode-centos-5.9
+    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-5.9_provisionerless.box
 # Fails on python setup.py install
 #- name: gentoo
 #  driver_config:
@@ -34,18 +34,21 @@ platforms:
 #  driver_config:
 #    box: scientific-linux-6-x64
 #    box_url: http://download.frameos.org/sl6-64-chefclient-0.10.box
-- name: arch-linux
-  driver_config:
-    box: archlinux
-    box_url: http://iweb.dl.sourceforge.net/project/vagrantarchlinx/2011.08.19/archlinux_2011.08.19.box
-- name: opensuse-12.1
-  driver_config:
-    box: opensuse-12.1-x64
-    box_url: https://s3.amazonaws.com/circlejtp/OpenSuseVagrant/OpenSuse12_1x64_July14.box
-- name: freebsd-9.1
-  driver_config:
-    box: freebsd-9.1-amd64
-    box_url: https://s3.amazonaws.com/vagrant_boxen/freebsd_amd64_ufs.box 
+# Image missing wget & curl. Can't install chef-client.
+#- name: arch-linux
+#  driver_config:
+#    box: archlinux
+#    box_url: http://iweb.dl.sourceforge.net/project/vagrantarchlinx/2011.08.19/archlinux_2011.08.19.box
+# Breaks on python magic.
+#- name: opensuse-12.1
+#  driver_config:
+#    box: opensuse-12.1-x64
+#    box_url: https://s3.amazonaws.com/circlejtp/OpenSuseVagrant/OpenSuse12_1x64_July14.box
+# Fails on STDERR: Vagrant attempted to execute the capability 'mount_virtualbox_shared_folder'
+#- name: freebsd-9.1
+#  driver_config:
+#    box: freebsd-9.1-amd64
+#    box_url: https://s3.amazonaws.com/vagrant_boxen/freebsd_amd64_ufs.box 
 suites:
 - name: default
   run_list: ["recipe[ghubbkup]"]
