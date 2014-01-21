@@ -14,6 +14,12 @@ case node['platform']
 
 end
 
+# Install the github_api ruby gem.
+# https://github.com/peter-murach/github
+gem_package "github_api" do
+  action :install
+end
+
 # Deploy the ghubbkup Ruby script.
 template "#{node['ghubbkup']['install_dir']}/ghubbkup" do
   source "ghubbkup.erb"
