@@ -5,53 +5,53 @@
 # Copyright 2014, Gerald L. Hevener Jr., M.S.
 #
 # Set config file for ghubbkup.
-node.set['ghubbkup']['conf'] = '/etc/ghubbkup.conf'
+default['ghubbkup']['conf'] = '/etc/ghubbkup.conf'
 
 # Set ghubbkup install dir.
-node.set['ghubbkup']['install_dir'] = '/usr/local/bin'
+default['ghubbkup']['install_dir'] = '/usr/local/bin'
 
 # Set Github user. You should probably override this!
-node.set['ghubbkup']['user'] = 'root'
+default['ghubbkup']['user'] = 'root'
 
 # Set group owner of config & backup dir. You should probably override this!
-node.set['ghubbkup']['group'] = 'root'
+default['ghubbkup']['group'] = 'root'
 
 # Set Github password. You should probably override this!
-node.set['ghubbkup']['pass'] = 'secret'
+default['ghubbkup']['pass'] = 'secret'
 
 # Encrypted data bag secret file.
-node.set['ghubbkup']['data_bag_secret'] = '/etc/chef/encrypted_data_bag_secret'
+default['ghubbkup']['data_bag_secret'] = '/etc/chef/encrypted_data_bag_secret'
 
 # Encrypted data bag name.
-node.set['ghubbkup']['encrypted_data_bag_name'] = 'ghubbkup'
+default['ghubbkup']['encrypted_data_bag_name'] = 'ghubbkup'
 
 # Encrypted data bag item.
-node.set['ghubbkup']['encrypted_data_bag_item'] = 'creds'
+default['ghubbkup']['encrypted_data_bag_item'] = 'creds'
 
 # Set tmp repo list.
-node.set['ghubbkup']['tmp_repo_list'] = '/tmp/repos.txt'
+default['ghubbkup']['tmp_repo_list'] = '/tmp/repos.txt'
 
 # Set repo list.
-node.set['ghubbkup']['repo_list'] = '/tmp/repos2.txt'
+default['ghubbkup']['repo_list'] = '/tmp/repos2.txt'
 
 # Set backup directory.
-node.set['ghubbkup']['backup_dir'] = '/tmp/github_repos_backup'
+default['ghubbkup']['backup_dir'] = '/tmp/github_repos_backup'
 
 # Set git extension.
-node.set['ghubbkup']['git_extension'] = '.git'
+default['ghubbkup']['git_extension'] = '.git'
 
 # Set git URL.
-node.set['ghubbkup']['git_url'] = 'https://github.com/'
+default['ghubbkup']['git_url'] = 'https://github.com/'
 
 # Backup method. Possible options: s3.
 # Set to s3 if you wan to backup repos to s3. No backups are done by default.
-node.set['ghubbkup']['backup_type'] = ''
+default['ghubbkup']['backup_type'] = ''
 
 # Override this with appropriate s3cmd line options you need.
-node.set['ghubbkup']['s3cmd_cmdline_options'] = 'sync'
+default['ghubbkup']['s3cmd_cmdline_options'] = 'sync'
 
 # You MUST Override this with a file[s]/dir[s] you want to backup to S3!
-node.set['ghubbkup']['files_to_backup'] = ''
+default['ghubbkup']['files_to_backup'] = ''
 
 # You MUST override this with an S3 bucket you want to backup files to!
-node.set['s3_bucket'] = ''
+default['s3_bucket'] = ''
