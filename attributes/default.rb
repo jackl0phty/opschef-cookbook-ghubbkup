@@ -5,7 +5,7 @@
 # Copyright 2014, Gerald L. Hevener Jr., M.S.
 #
 # Set config file for ghubbkup.
-default['ghubbkup']['conf'] = '/etc/ghubbkup.conf'
+default['ghubbkup']['conf_dir'] = '/etc'
 
 # Set ghubbkup install dir.
 default['ghubbkup']['install_dir'] = '/usr/local/bin'
