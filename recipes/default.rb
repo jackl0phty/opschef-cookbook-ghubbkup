@@ -73,7 +73,7 @@ directory node['ghubbkup']['backup_dir'] do
 end
 
 # Only install s3cmd if backup type is set to s3.
-if node['ghubbkup']['backup_type'] = 's3'
+if node.default['ghubbkup']['backup_type'] = 's3'
 
   # Include s3cmd.
   include_recipe 'ghubbkup::s3cmd'

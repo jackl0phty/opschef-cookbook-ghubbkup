@@ -2,6 +2,8 @@
 
 This file is used to list changes made in each version of ghubbkup.
 
+** 0.1.56
+* Fix check for backup type. bump.
 ## 0.1.54
 * Update README & CHANGELOG.
 * Only install s3cmd if backup type is set to s3.
