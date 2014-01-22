@@ -72,5 +72,10 @@ directory node['ghubbkup']['backup_dir'] do
   not_if "test -d #{node['ghubbkup']['backup_dir']}"
 end
 
-# Include s3cmd.
-include_recipe 'ghubbkup::s3cmd'
+# Only install s3cmd if backup type is set to s3.
+if default['ghubbkup']['backup_type'] = 's3'
+
+  # Include s3cmd.
+  include_recipe 'ghubbkup::s3cmd'
+
+end
