@@ -2,6 +2,12 @@
 
 This file is used to list changes made in each version of ghubbkup.
 
+## 0.1.54
+* Update README & CHANGELOG.
+* Only install s3cmd if backup type is set to s3.
+* Update metadata.rb. Add metadata.json.
+* Bunch of other fixes.
+
 ## 0.1.47
 * Working version of the ghubbkup script.
 * Initial travis-ci support.

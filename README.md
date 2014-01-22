@@ -136,14 +136,14 @@ skywalker@alderaan:~ $ sudo mv /home/skywalker/data_bag_secret_key /etc/chef/
 
 BACKING UP TO AMAZON'S S3
 -------------------------
-* By  default, ghubbkup will not try to backup your repos anywhere.
-* You must override `default['ghubbkup']['backup_type']` & set to `s3`.
-* The only non-local backup method supported is Amazon's S3.
-* You must also set `default['s3_bucket']` to name of the bucket you want to backup files to.
-* You must also set `default['ghubbkup']['files_to_backup']` to the files you'd like to backup.
-* You must also set `default['ghubbkup']['backup_dir'] ` to the directory you want to backup your repos to.
-* You can ignore the aforementioned attributes if you don't want to backup to S3 ( just clone all repos locally without copying to S3 ).
-* You must follow the README in the amazon_s3cmd cookbook to set up encrypted data bag for your S3 credentials.
+1. By  default, ghubbkup will not try to backup your repos anywhere.
+2. You must override `default['ghubbkup']['backup_type']` & set to `s3`.
+3. The only non-local backup method supported is Amazon's S3.
+4. You must also set `default['s3_bucket']` to name of the bucket you want to backup files to.
+5. You must also set `default['ghubbkup']['files_to_backup']` to the files you'd like to backup.
+6. You must also set `default['ghubbkup']['backup_dir'] ` to the directory you want to backup your repos to.
+7. You can ignore the aforementioned attributes if you don't want to backup to S3 ( just clone all repos locally without copying to S3 ).
+8. You must follow the README in the amazon_s3cmd cookbook to set up encrypted data bag for your S3 credentials.
 
 COOKBOOK DEPENDENCIES
 ---------------------
