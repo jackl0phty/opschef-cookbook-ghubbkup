@@ -9,6 +9,10 @@ Requirements
 * A working Ruby 1.9.x installation.
 * Installation of [s3cmd](http://s3tools.org/s3cmd)
 
+Ruby Gem Dependencies
+---------------------
+* [github_api](https://github.com/peter-murach/github) by Peter Murach.
+
 Attributes
 ----------
 # Set config file for ghubbkup.
