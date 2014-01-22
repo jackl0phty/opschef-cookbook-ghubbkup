@@ -2,6 +2,9 @@
 
 This file is used to list changes made in each version of ghubbkup.
 
+## 0.1.58
+* Comment out kitchen portion of Rakefile to fix travis-ci.
+* Updatew CHANGELOG. Bump.
 ## 0.1.57
 * Update .gitignore
 * Update CHANGELOG
