@@ -2,7 +2,11 @@
 
 This file is used to list changes made in each version of ghubbkup.
 
-** 0.1.56
+## 0.1.57
+* Update .gitignore
+* Update CHANGELOG
+* Add .chef/knife.rb. Bump.
+## 0.1.56
 * Fix check for backup type. bump.
 ## 0.1.54
 * Update README & CHANGELOG.
