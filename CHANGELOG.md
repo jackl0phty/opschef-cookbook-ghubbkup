@@ -2,6 +2,11 @@
 
 This file is used to list changes made in each version of ghubbkup.
 
+## 0.1.60
+* Fix copy/paste error in template. Bump.
+* Update README.md.
+* Update metadata.json.
+
 ## 0.1.58
 * Comment out kitchen portion of Rakefile to fix travis-ci.
 * Updatew CHANGELOG. Bump.

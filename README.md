@@ -15,56 +15,56 @@ Ruby Gem Dependencies
 
 Attributes
 ----------
-# Set config file for ghubbkup.
+Set config file for ghubbkup.
 default['ghubbkup']['conf_dir'] = '/etc'
 
-# Set ghubbkup install dir.
+Set ghubbkup install dir.
 default['ghubbkup']['install_dir'] = '/usr/local/bin'
 
-# Set Github user. You should probably override this!
+Set Github user. You should probably override this!
 default['ghubbkup']['user'] = 'root'
 
-# Set group owner of config & backup dir. You should probably override this!
+Set group owner of config & backup dir. You should probably override this!
 default['ghubbkup']['group'] = 'root'
 
-# Set Github password. You should probably override this!
+Set Github password. You should probably override this!
 default['ghubbkup']['pass'] = 'secret'
 
-# Encrypted data bag secret file.
+Encrypted data bag secret file.
 default['ghubbkup']['data_bag_secret'] = '/etc/chef/encrypted_data_bag_secret'
 
-# Encrypted data bag name.
+Encrypted data bag name.
 default['ghubbkup']['encrypted_data_bag_name'] = 'ghubbkup'
 
-# Encrypted data bag item.
+Encrypted data bag item.
 default['ghubbkup']['encrypted_data_bag_item'] = 'creds'
 
-# Set tmp repo list.
+Set tmp repo list.
 default['ghubbkup']['tmp_repo_list'] = '/tmp/repos.txt'
 
-# Set repo list.
+Set repo list.
 default['ghubbkup']['repo_list'] = '/tmp/repos2.txt'
 
-# Set backup directory.
+Set backup directory.
 default['ghubbkup']['backup_dir'] = '/tmp/github_repos_backup'
 
 # Set git extension.
 default['ghubbkup']['git_extension'] = '.git'
 
-# Set git URL.
+Set git URL.
 default['ghubbkup']['git_url'] = 'https://github.com/'
 
-# Backup method. Possible options: s3.
-# Set to s3 if you wan to backup repos to s3. No backups are done by default.
+Backup method. Possible options: s3.
+Set to s3 if you wan to backup repos to s3. No backups are done by default.
 default['ghubbkup']['backup_type'] = ''
 
-# Override this with appropriate s3cmd line options you need.
+Override this with appropriate s3cmd line options you need.
 default['ghubbkup']['s3cmd_cmdline_options'] = 'sync'
 
-# You MUST Override this with a file[s]/dir[s] you want to backup to S3!
+You MUST Override this with a file[s]/dir[s] you want to backup to S3!
 default['ghubbkup']['files_to_backup'] = ''
 
-# You MUST override this with an S3 bucket you want to backup files to!
+You MUST override this with an S3 bucket you want to backup files to!
 default['s3_bucket'] = ''
 
 Usage
@@ -138,7 +138,7 @@ Move your key to /etc/chef
 skywalker@alderaan:~ $ sudo mv /home/skywalker/data_bag_secret_key /etc/chef/
 </pre></code>
 
-BACKING UP TO AMAZON'S S3
+Backing up to Amazon's S3
 -------------------------
 1. By  default, ghubbkup will not try to backup your repos anywhere.
 2. You must override `default['ghubbkup']['backup_type']` & set to `s3`.
@@ -149,11 +149,11 @@ BACKING UP TO AMAZON'S S3
 7. You can ignore the aforementioned attributes if you don't want to backup to S3 ( just clone all repos locally without copying to S3 ).
 8. You must follow the README in the amazon_s3cmd cookbook to set up encrypted data bag for your S3 credentials.
 
-COOKBOOK DEPENDENCIES
+Cookbook Dependencies
 ---------------------
 This cookbook depends on my [amazon_s3cmd](https://github.com/jackl0phty/opschef-cookbook-amazon_s3cmd) cookbook which installs the s3cmd.
 
-SAMPLE ROLE
+Sample Role
 -----------
 Below is a sample role you could use:
 <pre><code>
@@ -184,14 +184,14 @@ Now just include your `ghubbkup` role in your node's `run_list`:
 }
 </pre></code>
 
-Example ghubbkup commands
+Example Ghubbkup Commands
 -------------------------
 Clone ALL repos for a single Github user or org.
 <pre><code>
 skywalker@alderaan:~$ ghubbkup all
 </pre></code>
 
-THINGS TO NOTE
+Things to note
 --------------
 * You should issue ghubbkup commands as the user who has access to your Github account.
 * You can override node['ghubbkup']['git_url'] & set it to git@github.com: to use SSH.
