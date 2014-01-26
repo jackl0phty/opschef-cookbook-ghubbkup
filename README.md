@@ -48,7 +48,7 @@ default['ghubbkup']['repo_list'] = '/tmp/repos2.txt'
 Set backup directory.
 default['ghubbkup']['backup_dir'] = '/tmp/github_repos_backup'
 
-# Set git extension.
+ Set git extension.
 default['ghubbkup']['git_extension'] = '.git'
 
 Set git URL.

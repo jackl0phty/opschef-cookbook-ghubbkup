@@ -2,6 +2,9 @@
 
 This file is used to list changes made in each version of ghubbkup.
 
+## 0.1.61
+* Remove unwanted # from README.md. Bump.
+
 ## 0.1.60
 * Fix copy/paste error in template. Bump.
 * Update README.md.
